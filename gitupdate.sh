@@ -19,7 +19,7 @@ interactiveCommit() {
     askInputMessage="Need to commit, Please key in command or message:"
     echo $askInputMessage
     read input
-    while [[ $input =~ ((git)|(rm)|(vim)|(cat)|(eamcs)|(gdiff)).* ]]
+    while [[ $input =~ ^((git)|(rm)|(vim)|(cat)|(eamcs)|(gdiff)).* ]]
     do
         $input
         echo $askInputMessage
