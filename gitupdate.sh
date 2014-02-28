@@ -35,44 +35,60 @@ autoCommit() {
 }
 
 update() {
-    # ls -d $PWD/*/
+    cd $origin
     if [ -d $1 ]
     then
         cd $1
         targetPath=$PWD
-        echo $targetPath
+        echo "Process:\n $targetPath"
         cd $targetPath
         if [ -d $targetPath/.git ]
         then
-            # remoteupdate
             needCommit=$(git status -s | wc -l)
             if [ $needCommit -gt 0 ]
             then
-                if [ $2 -gt 1 ]
-                then
+                if $quiet ; then
                     autoCommit
                 else
                     interactiveCommit
                 fi
             fi
-            echo $"All done!\nPush to all repositories..."
+            # echo $"All done!\nPush to all repositories..."
             push
         else
             echo "$targetPath is not a git repository "
         fi
     else
         echo "$1 is not a directory!"
+        usage
     fi
     echo
 }
+
+origin=$PWD
+quiet=false
+while getopts "qh" arg
+do
+    case $arg in
+        h)
+            usage
+            ;;
+        q)
+            quiet=true
+            ;;
+        ?)
+            echo "Unknown argument"
+            ;;
+    esac
+    shift
+done
 
 if [ $# -ge 1 ]
 then
     for i
     do
-        echo "Processing: $i"
         update $i $#
     done
 else
-    usage
+    update .
 fi
