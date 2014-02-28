@@ -27,7 +27,11 @@ interactiveCommit() {
     done
     echo $"\nYour message for commit:\n$input"
     commit
-    push
+}
+
+autoCommit() {
+    input="Auto commit by script"
+    commit
 }
 
 update() {
@@ -44,7 +48,12 @@ update() {
             needCommit=$(git status -s | wc -l)
             if [ $needCommit -gt 0 ]
             then
-                interactiveCommit
+                if [ $2 -gt 1 ]
+                then
+                    autoCommit
+                else
+                    interactiveCommit
+                fi
             fi
             echo $"All done!\nPush to all repositories..."
             push
@@ -61,8 +70,8 @@ if [ $# -ge 1 ]
 then
     for i
     do
-    echo "Processing: $i"
-    update $i
+        echo "Processing: $i"
+        update $i $#
     done
 else
     usage
