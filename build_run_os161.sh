@@ -24,7 +24,8 @@ else if [[ $@ == *r* ]]
 then
 if [[ $# > 1 ]]
 then
-    sys161 kernel ${!#}
+    shift
+    sys161 kernel $@
 else
     sys161 kernel
 fi
