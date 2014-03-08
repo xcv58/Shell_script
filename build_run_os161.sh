@@ -7,12 +7,16 @@ then
     # target=${@//[^0-9]/}
     target=${target::1}
     target="ASST"$target
+    if [[ $1 == *o ]]
+    then
+        target=$target-OPT
+    fi
     echo "Build for" $target
     cd ~/src/kern/conf
-    ./config $target
+    ./config $target > /dev/null
     cd ~/src/kern/compile/$target
-    bmake depend
-    bmake
+    bmake depend > /dev/null
+    bmake | sed -e '/mips-harvard-os161.*/d'
     bmake install
 fi
 fi
