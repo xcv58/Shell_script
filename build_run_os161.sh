@@ -17,7 +17,7 @@ then
     cd ~/src/kern/compile/$target
     bmake depend > /dev/null
     bmake | sed -e '/mips-harvard-os161.*/d'
-    bmake install
+    bmake install | tail -n 1
 fi
 fi
 cd ~/root
