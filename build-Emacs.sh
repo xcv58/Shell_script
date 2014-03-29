@@ -1,5 +1,4 @@
 build() {
-    mv /usr/local/bin/gcc /usr/local/bin/gccbak
     cd ~/emacs
     git pull github master
     git pull origin master
@@ -14,6 +13,5 @@ build() {
         mv /Applications/Emacs.app /Applications/EmacsBAK.app
         mv ~/emacs/nextstep/Emacs.app /Applications/Emacs.app
     fi
-    mv /usr/local/bin/gccbak /usr/local/bin/gcc
 }
 build

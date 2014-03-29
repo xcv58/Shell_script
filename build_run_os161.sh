@@ -1,3 +1,4 @@
+mv /usr/local/bin/gcc /usr/local/bin/gccbak
 if [ $# -eq 0 ]
 then
     echo "No arguments supplied! You should type 0 or 1 or 2 or 3."
@@ -20,6 +21,7 @@ then
     bmake install | tail -n 1
 fi
 fi
+mv /usr/local/bin/gccbak /usr/local/bin/gcc
 cd ~/root
 if [[ $@ == *rw* ]]
 then
