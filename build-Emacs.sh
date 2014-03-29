@@ -1,7 +1,6 @@
 build() {
     mv /usr/local/bin/gcc /usr/local/bin/gccbak
     cd ~/emacs
-    rm ~/.emacsbuildlog
     git pull github master
     git pull origin master
     ./configure --with-ns
