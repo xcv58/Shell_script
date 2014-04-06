@@ -10,6 +10,7 @@ usage() {
 if [[ $@ == [0-6] ]]
 then
     cp ~/root/sys161$@ ~/root/sys161.conf
+    build_run_os161.sh r
 else
     usage
 fi
