@@ -15,3 +15,4 @@ build() {
     fi
 }
 build
+date
