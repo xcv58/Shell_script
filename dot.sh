@@ -9,7 +9,7 @@ origin=$1
 if [ -f $origin ]; then
     target=${origin%.*}.pdf
     dot $origin -Tpdf -o $target
-    open $target
+    # open $target
 else
     echo File $origin doesn\'t exist or has other issue.
 fi
