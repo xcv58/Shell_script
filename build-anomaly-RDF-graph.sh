@@ -10,7 +10,8 @@ runcommand="java -cp target/anomalyrdfgraph-0.1-SNAPSHOT.jar com.xcv58.anomalyrd
 askInputMessage="Please select dataset:\n
 1: Social Only\n
 2: Referral Only\n
-3: Social + Referral"
+3: Social + Referral\n
+4: NetworkConnections"
 echo $askInputMessage
 read inputOption
 if [[ $inputOption == 1 ]]; then
@@ -21,6 +22,9 @@ if [[ $inputOption == 2 ]]; then
 fi
 if [[ $inputOption == 3 ]]; then
     input="/Users/xcv58/Work/anomalyrdfgraph/SNAKE2/ReferralGraph.csv /Users/xcv58/Work/anomalyrdfgraph/SNAKE2/SocialGraph.csv"
+fi
+if [[ $inputOption == 4 ]]; then
+    input="/Users/xcv58/private/NetworkConnections.csv"
 fi
 # if [[ $@ == h* ]]
 # then
