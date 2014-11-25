@@ -14,5 +14,16 @@ build() {
         mv ~/emacs/nextstep/Emacs.app /Applications/Emacs.app
     fi
 }
+sendResult() {
+    result=$(tail -2 ~/.emacsbuildlog)
+    apikey=$(cat ~/.mailgun.apikey)
+    curl -s --user "${apikey}" \
+         https://api.mailgun.net/v2/mg.xcv58.com/messages \
+         -F from='Emacs Building System <emacs.build@xcv58.com>' \
+         -F to=log@xcv58.com \
+         -F subject='Emacs Build Result' \
+         -F text="${result}"
+}
 build
 date
+sendResult
