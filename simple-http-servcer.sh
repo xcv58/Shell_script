@@ -13,6 +13,19 @@ if [ -z "${port}" ]; then
     port=8000
 fi
 
+while :
+do
+    result=$(lsof -i ":${port}")
+    if [ -z "${result}" ]; then
+        break
+    fi
+    ((port++))
+    if [ ${port} -eq 65535 ]; then
+        echo "No available port, EXIT."
+        exit
+    fi
+done
+
 address=$(ifconfig | grep -o "inet [a-z:]*[0-9\.]*" | grep -v "127.0.0.1" | sed -e "s/inet [a-z:]*//g")
 echo
 echo "${address}:${port}"
