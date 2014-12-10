@@ -28,9 +28,13 @@ done
 
 address=$(ifconfig | grep -o "inet [a-z:]*[0-9\.]*" | grep -v "127.0.0.1" | sed -e "s/inet [a-z:]*//g")
 echo
-echo "${address}:${port}"
+url="${address}:${port}"
+echo "${url}"
 if [ "$unamestr" = 'Darwin' ]; then
-    echo "${address}:${port}" | pbcopy
+    echo "${url}" | pbcopy
+    osascript <<EOF
+display notification with title "Copy to Clipboard" subtitle "${url}"
+EOF
 fi
 
 python -m SimpleHTTPServer ${port}
