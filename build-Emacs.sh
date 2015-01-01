@@ -15,9 +15,9 @@ build() {
 }
 sendResult() {
     result=$(tail -2 ~/.emacsbuildlog)
-    apikey=$(cat ~/.mailgun.apikey)
+    apikey=$(cat ~/.api/mailgun.apikey)
     curl -s --user "${apikey}" \
-         https://api.mailgun.net/v2/mg.xcv58.com/messages \
+         https://api.mailgun.net/v2/xcv58.com/messages \
          -F from='Emacs Building System <emacs.build@xcv58.com>' \
          -F to=i@xcv58.com \
          -F subject='Emacs Build Result' \
