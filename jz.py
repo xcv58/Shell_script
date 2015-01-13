@@ -28,7 +28,8 @@ try:
         edit_mode = 2
     else:
         content = "<p class='line'>" + date + "</p><p>" + record + "</p>"
-        edit_mode = 3
+        # edit_mode = 3
+        edit_mode = 2
     client.edit_document(THREAD_ID, content, edit_mode, "html", title_scetion_id)
     print date, record
 except:
