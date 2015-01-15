@@ -38,5 +38,8 @@ EOF
 fi
 
 nodeServer=$(which http-server)
-echo ${nodeServer}
-# python -m SimpleHTTPServer ${port}
+if [ ${nodeServer} ]; then
+    http-server . -p ${port}
+else
+    python -m SimpleHTTPServer ${port}
+fi
