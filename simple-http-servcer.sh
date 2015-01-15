@@ -19,7 +19,7 @@ do
     if [ -z "${result}" ]; then
         break
     fi
-    ((port++))
+    port=$((port+1))
     if [ ${port} -eq 65535 ]; then
         echo "No available port, EXIT."
         exit
