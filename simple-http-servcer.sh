@@ -37,4 +37,6 @@ display notification with title "Copy to Clipboard" subtitle "${url}"
 EOF
 fi
 
-python -m SimpleHTTPServer ${port}
+nodeServer=$(which http-server)
+echo ${nodeServer}
+# python -m SimpleHTTPServer ${port}
