@@ -26,7 +26,7 @@ do
     fi
 done
 
-address=$(ifconfig | grep -o "inet [a-z:]*[0-9\.]*" | grep -v "127.0.0.1" | sed -e "s/inet [a-z:]*//g")
+address=$(ifconfig | grep -o "inet [a-z:]*[0-9\.]*" | grep -v "127.0.0.1" | sed -e "s/inet [a-z:]*//g" | head -1)
 echo
 url="${address}:${port}"
 echo "${url}"
