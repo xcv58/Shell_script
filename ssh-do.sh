@@ -1,5 +1,5 @@
 #!/bin/bash
-command="ssh doReverse -N"
+command="ssh doReverse -Nf"
 osascript <<EOF
 display notification with title "Reconnect" subtitle "${command}"
 EOF
