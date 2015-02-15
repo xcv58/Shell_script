@@ -1,3 +1,4 @@
+#!/bin/bash
 build() {
     cd ~/emacs
     git fetch --all
