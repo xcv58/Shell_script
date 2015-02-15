@@ -29,4 +29,4 @@ sendResult() {
 }
 build
 date
-# sendResult
+sendResult
