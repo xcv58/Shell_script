@@ -1,17 +1,21 @@
 #!/bin/bash
+TARGET=~/emacs/nextstep/Emacs.app
+BAK=/Applications/EmacsBAK.app
+INSTALL=/Applications/Emacs.app
+
 build() {
     cd ~/emacs
     git fetch --all
     ./configure --with-ns
     make install
-    if [ -d ~/emacs/nextstep/Emacs.app ]
+    if [ -d ${TARGET} ]
     then
-        if [ -d /Applications/EmacsBAK.app ]
+        if [ -d ${BAK} ]
         then
-            rm -rf /Applications/EmacsBAK.app
+            rm -rf ${BAK}
         fi
-        mv /Applications/Emacs.app /Applications/EmacsBAK.app
-        mv ~/emacs/nextstep/Emacs.app /Applications/Emacs.app
+        mv ${INSTALL} ${BAK}
+        mv ${TARGET} ${INSTALL}
     fi
 }
 sendResult() {
@@ -25,5 +29,5 @@ sendResult() {
          -F text="${result}"
 }
 build
-date
-sendResult
+date "+%m/%d/%y %H:%M:%S"
+sendResult >> /dev/null

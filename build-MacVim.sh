@@ -2,6 +2,7 @@
 TARGET=~/macvim/src/MacVim/build/Release/MacVim.app
 BAK=/Applications/MacVimBak.app
 INSTALL=/Applications/MacVim.app
+
 build() {
     cd ~/macvim/src
     git fetch --all
@@ -18,7 +19,7 @@ build() {
     fi
 }
 sendResult() {
-    result=$(tail -2 ~/.emacsbuildlog)
+    result=$(tail -3 ~/.macvimBuildLog)
     apikey=$(cat ~/.api/mailgun.apikey)
     curl -s --user "${apikey}" \
          https://api.mailgun.net/v2/xcv58.com/messages \
@@ -28,5 +29,5 @@ sendResult() {
          -F text="${result}"
 }
 build
-date
-sendResult
+date "+%m/%d/%y %H:%M:%S"
+sendResult >> /dev/null
