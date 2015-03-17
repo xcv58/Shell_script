@@ -1,5 +1,6 @@
 #!/bin/bash
-command="ssh doReverse -Nf"
+command="ssh doReverse_`hostname -s` -Nf"
+echo ${command}
 osascript <<EOF
 display notification with title "Reconnect" subtitle "${command}"
 EOF
