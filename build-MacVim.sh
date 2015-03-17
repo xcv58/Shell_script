@@ -6,7 +6,7 @@ INSTALL=/Applications/MacVim.app
 build() {
     cd ~/.macvim/src
     git fetch --all
-    ./configure --enable-python3interp=yes --enable-pythoninterp=yes
+    ./configure --enable-pythoninterp=yes
     result=$(make 2>&1)
     time=$(date "+%m/%d/%y %H:%M:%S")
     echo "${result}"
@@ -27,12 +27,13 @@ build() {
 }
 sendResult() {
     apikey=$(cat ~/.api/mailgun.apikey)
+    subject="MacVim Build Result from `hostname -s`"
     curl -s --user "${apikey}" \
          https://api.mailgun.net/v2/xcv58.com/messages \
          -F from='MacVim Building System <macvim.build@xcv58.com>' \
          -F to=i@xcv58.com \
-         -F subject='MacVim Build Result' \
+         -F subject="${subject}" \
          -F text="${result}"
 }
 build
-# sendResult >> /dev/null
+sendResult >> /dev/null
