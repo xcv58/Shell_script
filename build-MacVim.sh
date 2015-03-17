@@ -1,5 +1,5 @@
 #!/bin/bash
-TARGET=~/macvim/src/MacVim/build/Release/MacVim.app
+TARGET=~/.macvim/src/MacVim/build/Release/MacVim.app
 BAK=/Applications/MacVimBak.app
 INSTALL=/Applications/MacVim.app
 
@@ -18,7 +18,10 @@ build() {
         then
             rm -rf ${BAK}
         fi
-        mv ${INSTALL} ${BAK}
+        if [ -d ${INSTALL} ]
+        then
+            mv ${INSTALL} ${BAK}
+        fi
         mv ${TARGET} ${INSTALL}
     fi
 }
@@ -32,4 +35,4 @@ sendResult() {
          -F text="${result}"
 }
 build
-sendResult >> /dev/null
+# sendResult >> /dev/null
