@@ -5,7 +5,7 @@ INSTALL=/Applications/MacVim.app
 
 build() {
     cd ~/.macvim/src
-    git fetch --all
+    git remote | xargs -n 1 git pull
     ./configure --enable-pythoninterp=yes
     result=$(make 2>&1)
     time=$(date "+%m/%d/%y %H:%M:%S")
