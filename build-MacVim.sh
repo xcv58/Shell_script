@@ -4,10 +4,14 @@ BAK=/Applications/MacVimBak.app
 INSTALL=/Applications/MacVim.app
 
 build() {
-    cd ~/macvim/src
+    cd ~/.macvim/src
     git fetch --all
-    ./configure
-    make
+    ./configure --enable-python3interp=yes --enable-pythoninterp=yes
+    result=$(make 2>&1)
+    time=$(date "+%m/%d/%y %H:%M:%S")
+    echo "${result}"
+    echo "${time}"
+    result=$(echo "${result}" | tail -2 && echo "${time}")
     if [ -d ${TARGET} ]
     then
         if [ -d ${BAK} ]
@@ -19,7 +23,6 @@ build() {
     fi
 }
 sendResult() {
-    result=$(tail -3 ~/.macvimBuildLog)
     apikey=$(cat ~/.api/mailgun.apikey)
     curl -s --user "${apikey}" \
          https://api.mailgun.net/v2/xcv58.com/messages \
@@ -29,5 +32,4 @@ sendResult() {
          -F text="${result}"
 }
 build
-date "+%m/%d/%y %H:%M:%S"
 sendResult >> /dev/null
