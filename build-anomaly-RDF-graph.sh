@@ -6,12 +6,13 @@ then
     exit
 fi
 
-runcommand="java -cp target/anomalyrdfgraph-0.1-SNAPSHOT.jar com.xcv58.anomalyrdfgraph.App"
+runcommand="java -Xmx6g -cp target/anomalyrdfgraph-0.1-SNAPSHOT.jar com.xcv58.anomalyrdfgraph.App"
 askInputMessage="Please select dataset:\n
 1: Social Only\n
 2: Referral Only\n
 3: Social + Referral\n
-4: NetworkConnections"
+4: NetworkConnections\n
+5: temp"
 echo $askInputMessage
 read inputOption
 if [[ $inputOption == 1 ]]; then
@@ -26,6 +27,9 @@ fi
 if [[ $inputOption == 4 ]]; then
     input="/Users/xcv58/private/NetworkConnections.csv"
 fi
+if [[ $inputOption == 5 ]]; then
+    input="/Users/xcv58/Work/anomalyrdfgraph/SNAKE2/temp.csv"
+fi
 # if [[ $@ == h* ]]
 # then
 # ReferralGraph.csv
@@ -34,7 +38,7 @@ fi
 # else
 # input="/Users/xcv58/private/NetworkConnections.csv"
 # fi
-output="out"
+output="out/clusters"
 runcommand="$runcommand $input $output"
 if [[ $@ == *rw* ]]
 then
