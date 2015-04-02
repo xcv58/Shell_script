@@ -12,7 +12,12 @@ on toggle(appPath)
 			set frontmostCount to frontmostCount + 1
 			tell application appPath to activate
 			tell application appPath
-				if windows is {} then reopen
+				try
+					if windows is {} then reopen
+				on error errorMessage number errorNumber
+					-- log errorMessage
+					-- log errorNumber
+				end try
 			end tell
 		end if
 	end if
@@ -26,7 +31,6 @@ on run argv
 		toggle(arg)
 		if frontmostCount > 0 then exit repeat
 	end repeat
-	log foundCount
 	if frontmostCount is 0 then
 		tell application "System Events"
 			set frontProcess to first process whose frontmost is true
