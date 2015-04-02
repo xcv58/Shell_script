@@ -3,7 +3,6 @@ import os, subprocess
 
 base_dir = os.path.dirname(os.path.realpath(__file__))
 target_dir = '/usr/local/bin'
-suffix = '.scpt'
 alias_file = os.path.join(os.path.expanduser("~"), '.zshrc_scpt_alias.zsh')
 ALIAS = 'alias '
 
@@ -53,7 +52,7 @@ def alias(alias_list):
     f.close()
     return
 
-def main():
+def main(suffix):
     alias_list = []
     for (dirpath, dirnames, filenames) in os.walk(base_dir):
         for file in [i for i in filenames if i.endswith(suffix)]:
@@ -64,5 +63,5 @@ def main():
     alias(alias_list)
     return
 
-
-main()
+main('.scpt')
+main('.applescript')
