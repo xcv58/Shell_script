@@ -6,10 +6,45 @@ function link_file() {
     ln -s ${1} ${2}
 }
 
+function link_build_scripts() {
+    link_file ${PWD}/build-Emacs.sh /usr/local/bin/buildEmacs
+    link_file ${PWD}/build-MacVim.sh /usr/local/bin/buildMacVim
+}
+
+function prepare_applescript() {
+    python AppleScript/link-AppleScript.py
+}
+
+function link_plist_for_launchctl() {
+    local LAUNCHCTL_PATH="~/Library/LaunchAgents"
+    local PLIST_PATH="${PWD}/plist"
+    for plist_file in "${PLIST_PATH}"/*.plist; do
+        link_command="ln -sf ${plist_file} ${LAUNCHCTL_PATH}/${plist_file:t}"
+        echo ${link_command}
+        eval ${link_command}
+    done
+}
+
 SCRIPT_FILE=$0
 SCRIPT_PATH=$(dirname $SCRIPT_FILE)
 cd ${SCRIPT_PATH}
-python AppleScript/link-AppleScript.py
+source ${SCRIPT_PATH}/base.zsh
 
-link_file ${PWD}/build-Emacs.sh /usr/local/bin/buildEmacs
-link_file ${PWD}/build-MacVim.sh /usr/local/bin/buildMacVim
+SPLIT_LINE="----------------------------------------------------------------"
+
+echo ${SPLIT_LINE}
+echo "prepare applescript"
+echo ${SPLIT_LINE}
+prepare_applescript
+
+echo
+echo ${SPLIT_LINE}
+echo "link build scripts"
+echo ${SPLIT_LINE}
+link_build_scripts
+
+echo
+echo ${SPLIT_LINE}
+echo "link plist for launchctl"
+echo ${SPLIT_LINE}
+link_plist_for_launchctl
