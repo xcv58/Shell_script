@@ -28,7 +28,7 @@ function link_plist_for_launchctl() {
 SCRIPT_FILE=$0
 SCRIPT_PATH=$(dirname $SCRIPT_FILE)
 cd ${SCRIPT_PATH}
-source ${SCRIPT_PATH}/base.zsh
+source ./base.zsh
 
 SPLIT_LINE="----------------------------------------------------------------"
 
