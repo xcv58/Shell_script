@@ -31,7 +31,7 @@ on run argv
 		toggle(arg)
 		if frontmostCount > 0 then exit repeat
 	end repeat
-	if frontmostCount is 0 then
+	if frontmostCount is 0 and foundCount > 0 then
 		tell application "System Events"
 			set frontProcess to first process whose frontmost is true
 			set visible of frontProcess to false
