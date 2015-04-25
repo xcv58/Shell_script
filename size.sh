@@ -4,5 +4,5 @@ while true; do
     num=$(ls | wc -l)
     time=$(date "+%H:%M:%S")
     echo ${size} ${num} ${time}
-    sleep 0.5
+    sleep 1
 done
