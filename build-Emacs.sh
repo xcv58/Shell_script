@@ -5,6 +5,7 @@ INSTALL=/Applications/Emacs.app
 
 build() {
     cd ~/.emacs
+    git reset --hard HEAD
     git remote | xargs -n 1 git pull
     ./configure --with-ns
     result=$(make install 2>&1)
