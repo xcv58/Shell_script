@@ -4,6 +4,7 @@ BAK=/Applications/EmacsBAK.app
 INSTALL=/Applications/Emacs.app
 
 build() {
+    start_timestamp=$(date "+%s")
     cd ~/.emacs
     git reset --hard HEAD
     git remote | xargs -n 1 git pull
@@ -12,7 +13,8 @@ build() {
     time=$(date "+%m/%d/%y %H:%M:%S")
     echo "${result}"
     echo "${time}"
-    result=$(echo "${result}" | tail -1 && echo "${time}")
+    end_timestamp=$(date "+%s")
+    result=$(echo "${result}" | tail -1 && echo "${time}" && echo "${end_timestamp}-${start_timestamp}=$(expr ${end_timestamp} - ${start_timestamp})")
     if [ -d ${TARGET} ]
     then
         if [ -d ${BAK} ]
