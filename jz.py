@@ -21,7 +21,7 @@ try:
     thread = client.get_thread(THREAD_ID)
     line = [line for line in thread["html"].split('\n') if line != ""][1]
     title_scetion_id = line.split('\'')[1]
-    content = "<p>" + date + " " + record + "</p>"
+    content = "<p class='line'>" + date + " " + record + "</p>"
     edit_mode = 3
     client.edit_document(THREAD_ID, content, edit_mode, "html", title_scetion_id)
     print date, record
