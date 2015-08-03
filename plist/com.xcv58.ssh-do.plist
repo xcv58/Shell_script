@@ -8,16 +8,7 @@
   <false/>
   <key>ProgramArguments</key>
   <array>
-    <string>/usr/bin/ssh</string>
-    <string>-C</string>
-    <string>-N</string>
-    <string>-c</string>
-    <string>blowfish</string>
-    <string>-o</string>
-    <string>ServerAliveInterval=3</string>
-    <string>-o</string>
-    <string>ExitOnForwardFailure=yes</string>
-    <string>doReverse_xcv58</string>
+    <string>/usr/local/bin/ssh-do-daemon</string>
   </array>
   <key>StandardOutPath</key>
   <string>/Users/xcv58/.ssh-do.log</string>

@@ -11,6 +11,10 @@ function link_build_scripts() {
     link_file ${PWD}/build-MacVim.sh /usr/local/bin/buildMacVim
 }
 
+function link_reverse_SSH_tunneling() {
+    link_file ${PWD}/ssh-do-daemon.sh /usr/local/bin/ssh-do-daemon
+}
+
 function prepare_applescript() {
     python AppleScript/link-AppleScript.py
 }
@@ -42,6 +46,7 @@ echo ${SPLIT_LINE}
 echo "link build scripts"
 echo ${SPLIT_LINE}
 link_build_scripts
+link_reverse_SSH_tunneling
 
 echo
 echo ${SPLIT_LINE}
