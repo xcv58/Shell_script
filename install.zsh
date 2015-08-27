@@ -11,6 +11,14 @@ function link_build_scripts() {
     link_file ${PWD}/build-MacVim.sh /usr/local/bin/buildMacVim
 }
 
+function link_bin() {
+    for file in ${PWD}/bin/*; do
+        command="ln -fs ${file} /usr/local/bin/${file:t:s/.sh//}"
+        echo ${command}
+        eval ${command}
+    done
+}
+
 function link_reverse_SSH_tunneling() {
     link_file ${PWD}/ssh-do-daemon.sh /usr/local/bin/ssh-do-daemon
 }
@@ -47,6 +55,12 @@ echo "link build scripts"
 echo ${SPLIT_LINE}
 link_build_scripts
 link_reverse_SSH_tunneling
+
+echo
+echo ${SPLIT_LINE}
+echo "link bin files"
+echo ${SPLIT_LINE}
+link_bin
 
 echo
 echo ${SPLIT_LINE}
