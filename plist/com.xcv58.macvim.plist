@@ -15,10 +15,8 @@
     </dict>
     <key>StartCalendarInterval</key>
     <dict>
-      <key>Minute</key>
-      <integer>0</integer>
-      <key>Hour</key>
-      <integer>5</integer>
+      <key>Weekday</key>
+      <integer>1</integer>
     </dict>
     <key>StandardOutPath</key>
     <string>/Users/xcv58/.macvimBuildLog</string>
