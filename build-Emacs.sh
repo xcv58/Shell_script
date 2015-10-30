@@ -9,9 +9,9 @@ build() {
     git reset --hard HEAD
     git remote | xargs -n 1 git pull
     ./configure --with-ns
-    result=$(make install 2>&1)
+    exec 5>&1
+    result=$(make install |& tee /dev/fd/5)
     time=$(date "+%m/%d/%y %H:%M:%S")
-    echo "${result}"
     echo "${time}"
     end_timestamp=$(date "+%s")
     result=$(echo "${result}" | tail -1 && echo "${time}" && echo "${end_timestamp}-${start_timestamp}=$(expr ${end_timestamp} - ${start_timestamp})")
