@@ -10,7 +10,7 @@ build() {
     git remote | xargs -n 1 git pull
     ./configure --enable-pythoninterp=yes
     exec 5>&1
-    result=$(make |& tee /dev/fd/5)
+    result=$(make 2>&1 | tee /dev/fd/5)
     time=$(date "+%m/%d/%y %H:%M:%S")
     echo "${time}"
     end_timestamp=$(date "+%s")

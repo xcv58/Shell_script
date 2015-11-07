@@ -10,7 +10,7 @@ build() {
     git remote | xargs -n 1 git pull
     ./configure --with-ns
     exec 5>&1
-    result=$(make install |& tee /dev/fd/5)
+    result=$(make install 2>&1 | tee /dev/fd/5)
     time=$(date "+%m/%d/%y %H:%M:%S")
     echo "${time}"
     end_timestamp=$(date "+%s")
