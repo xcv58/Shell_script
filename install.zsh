@@ -21,6 +21,7 @@ function link_bin() {
 
 function link_reverse_SSH_tunneling() {
     link_file ${PWD}/ssh-do-daemon.sh /usr/local/bin/ssh-do-daemon
+    link_file ${PWD}/ssh-ngrok-daemon.sh /usr/local/bin/ssh-ngrok-daemon
 }
 
 function prepare_applescript() {
