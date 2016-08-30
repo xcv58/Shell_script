@@ -2,17 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>Label</key>
-  <string>com.xcv58.ssh-ngrok</string>
-  <key>OnDemand</key>
-  <false/>
-  <key>ProgramArguments</key>
-  <array>
-    <string>/usr/local/bin/ssh-ngrok-daemon</string>
-  </array>
-  <key>StandardOutPath</key>
-  <string>/Users/xcv58/.ssh-ngrok.log</string>
-  <key>StandardErrorPath</key>
-  <string>/Users/xcv58/.ssh-ngrok.log</string>
+	<key>Label</key>
+	<string>com.xcv58.ssh-ngrok</string>
+	<key>OnDemand</key>
+	<false/>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/local/bin/ssh-ngrok-daemon</string>
+	</array>
 </dict>
 </plist>
