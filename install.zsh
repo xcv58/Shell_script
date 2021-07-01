@@ -57,6 +57,11 @@ echo ${SPLIT_LINE}
 link_build_scripts
 link_reverse_SSH_tunneling
 
+echo ${SPLIT_LINE}
+echo "link backup scripts"
+echo ${SPLIT_LINE}
+link_file ${PWD}/backup-homebridge.sh /usr/local/bin/backupHomebridge
+
 echo
 echo ${SPLIT_LINE}
 echo "link bin files"
