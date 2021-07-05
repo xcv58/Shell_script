@@ -15,14 +15,14 @@
     </dict>
     <key>StartCalendarInterval</key>
     <dict>
+      <key>Hour</key>
+      <integer>1</integer>
       <key>Minute</key>
       <integer>0</integer>
-      <key>Hour</key>
-      <integer>5</integer>
     </dict>
     <key>StandardOutPath</key>
-    <string>/Users/xcv58/.homebridgeBackupLog</string>
+    <string>/Users/yihongc/.homebridgeBackupLog</string>
     <key>StandardErrorPath</key>
-    <string>/Users/xcv58/.homebridgeBackupLog</string>
+    <string>/Users/yihongc/.homebridgeBackupLog</string>
   </dict>
 </plist>
