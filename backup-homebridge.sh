@@ -13,10 +13,10 @@ sendResult() {
     subject="Homebridge Backup Result from `hostname -s`"
     curl -s --user "${apikey}" \
          https://api.mailgun.net/v2/xcv58.com/messages \
-         -F from='MacVim Building System <homebridge.backup@xcv58.com>' \
+         -F from='Homebridge Backup <homebridge.backup@xcv58.com>' \
          -F to=i@xcv58.com \
          -F subject="${subject}" \
-         -F text="${result}"
+         -F text="Success"
 }
 backup
-sendResult >> /dev/null
+sendResult
