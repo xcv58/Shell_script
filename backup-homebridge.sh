@@ -3,7 +3,8 @@ TARGET=~/.homebridge
 
 backup() {
     rsync -a -r pi:/var/lib/homebridge/ ${TARGET}
-    rsync -a pi:/etc/cloudflared/config.yml ${TARGET}/cloudflared/
+    rsync -a -r pi:/etc/cloudflared/ ${TARGET}/cloudflared
+    rsync -a -r pi:/home/pi/.cloudflared/ ${TARGET}/home-dir-pi/cloudflared
     rsync -a pi:/home/pi/.zhistory ${TARGET}/home-dir-pi/
     rsync -a pi:/home/pi/.bash_history ${TARGET}/home-dir-pi/
     cd ${TARGET}
