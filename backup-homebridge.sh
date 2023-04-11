@@ -9,6 +9,7 @@ backup() {
     rsync -av pi:/home/pi/homeassistant/ ${TARGET}/home-dir-pi/homeassistant
     rsync -av pi:/home/pi/.zhistory ${TARGET}/home-dir-pi/
     rsync -av pi:/home/pi/.bash_history ${TARGET}/home-dir-pi/
+    rsync -av pi:/home/pi/compose.yml ${TARGET}/home-dir-pi/
     cd ${TARGET}
     git add .
     git commit -am "Cron backup"
