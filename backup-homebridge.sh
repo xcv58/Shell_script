@@ -6,6 +6,7 @@ backup() {
     rsync -av -r pi:/var/lib/homebridge/ ${TARGET}
     rsync -av -r pi:/etc/cloudflared/ ${TARGET}/cloudflared
     rsync -av -r pi:/home/pi/.cloudflared/ ${TARGET}/home-dir-pi/cloudflared
+    rsync -av pi:/home/pi/homeassistant/ ${TARGET}/home-dir-pi/homeassistant
     rsync -av pi:/home/pi/.zhistory ${TARGET}/home-dir-pi/
     rsync -av pi:/home/pi/.bash_history ${TARGET}/home-dir-pi/
     cd ${TARGET}
